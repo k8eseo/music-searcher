@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum URLError: Error {
-    case BadURL, BadData
+    case BadURL, BadData, BadServerResponse
 }
 
 @main
@@ -16,7 +16,7 @@ struct MusicSearcherApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(ArtistHelper())
+                .environmentObject(APIHelper())
         }
     }
 }

@@ -8,31 +8,41 @@
 import SwiftUI
 
 struct SearchArtistView: View {
-    
-    @State var artistName: String = ""
-    var action: (() -> Void)? = nil
+    @State var artistName: String
+    @State private var navigateToNextView = false
     
     var body: some View {
-        VStack {
-            Text("top tracks")
-                .font(.title)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .padding(.bottom)
-            HStack {
-                TextField("artist name", text: $artistName)
-                    .textFieldStyle(.roundedBorder)
-                    .frame(width: 250)
-                    .textInputAutocapitalization(.never)
-                    .onSubmit {
-                        if let doIt = action { doIt() }
+        NavigationView {
+            VStack {
+                Text("Search by Artist")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.bottom)
+                
+                HStack {
+                    TextField("Artist Name", text: $artistName)
+                        .textFieldStyle(.roundedBorder)
+                        .frame(width: 250)
+                        .textInputAutocapitalization(.never)
+                        .onSubmit {
+                            navigateToNextView = !artistName.isEmpty
+                        }
+                    
+                    Button {
+                        navigateToNextView = !artistName.isEmpty
+                    } label: {
+                        Label("", systemImage: "magnifyingglass")
                     }
-                Button {
-                    if let doIt = action { doIt() }
-                } label: {
-                    Label("", systemImage: "magnifyingglass")
+                    .disabled(artistName.isEmpty)
                 }
-                .disabled(artistName.isEmpty)
+                
+                NavigationLink(
+                    destination: ArtistView(artistName: artistName).environmentObject(APIHelper()),
+                    isActive: $navigateToNextView,
+                    label: { EmptyView() }
+                )
             }
+            .padding()
         }
     }
 }

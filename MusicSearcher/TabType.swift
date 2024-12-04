@@ -12,7 +12,7 @@ enum TabType: Int, CaseIterable {
     case home, artist, album
     
     var title: String {
-        String(describing: self)
+        String(describing: self).capitalized
     }
     
     var image: String {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchAlbumView: View {
     var body: some View {
-        Text("Artist")
+        Text("Album")
     }
 }
 

@@ -16,7 +16,7 @@ struct ContentView: View {
                 }
                 .tag(0)
             
-            SearchArtistView()
+            SearchArtistView(artistName: "")
                 .tabItem {
                     Label(TabType.artist.title, image: TabType.artist.image)
                 }
