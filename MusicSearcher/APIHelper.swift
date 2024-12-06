@@ -76,7 +76,7 @@ class APIHelper: ObservableObject {
         let decoder = JSONDecoder()
         let decodedResponse = try decoder.decode(TopTracksResponse.self, from: data)
         
-        return Array(decodedResponse.toptracks.track.prefix(15))
+        return Array(decodedResponse.toptracks.track.prefix(10))
     }
 }
 

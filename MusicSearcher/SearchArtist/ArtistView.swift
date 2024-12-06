@@ -16,7 +16,6 @@ struct ArtistView: View {
     @State private var isLoading = true
     @State private var errorMessage: String?
     
-    
     var body: some View {
         
         ScrollView {
@@ -29,7 +28,6 @@ struct ArtistView: View {
                     Text(artistInfo.name)
                         .font(.system(size: 40))
                         .fontWeight(.bold)
-                        .padding(.top, 20)
                         .padding(.bottom, 30)
                     
                     // Listeners/playcount
@@ -64,7 +62,7 @@ struct ArtistView: View {
                         HStack {
                             ForEach(artistInfo.tags.tag, id: \.name) { tag in
                                 Text(tag.name)
-                                    .font(.caption)
+                                    .font(.system(size: 10))
                                     .padding(6)
                                     .background(Color.secondary.opacity(0.2))
                                     .cornerRadius(5)
@@ -88,39 +86,50 @@ struct ArtistView: View {
                     .frame(width: 400, height: 300)
                     .padding(.bottom, 40)
                     
-                     // Top songs
-                     Text("Top Songs")
-                         .fontWeight(.bold)
-                         .padding(.bottom, 10)
-                         .font(.title2)
-                     
-                     ScrollView {
-                         ForEach(topTracks.indices, id: \.self) { index in
-                             HStack {
-                                 Text(topTracks[index].name)
-                                     .font(.body)
-                                     .padding(.bottom, 3)
-                                 Spacer()
-                                 
-                                 VStack(alignment: .trailing) {
-                                 if let playcount = Int(topTracks[index].playcount) {
-                                     Text("Plays: \(playcount.formatted())")
-                                         .font(.subheadline)
-                                         .foregroundColor(.gray)
-                                 }
-                                 if let listeners = Int(topTracks[index].listeners) {
-                                     Text("Listeners: \(listeners.formatted())")
-                                         .font(.subheadline)
-                                         .foregroundColor(.gray)
-                                 }
-                             }
-                         }
-                         .padding(.horizontal, 30)
-                         .padding(.vertical, 5)
-                         }
-                         .listStyle(PlainListStyle())
-                         .padding(.bottom, 50)
-                     }
+                    // Top songs
+                    Text("Top Songs")
+                        .fontWeight(.bold)
+                        .padding(.bottom, 5)
+                        .font(.title2)
+                    
+                    ScrollView {
+                        ForEach(topTracks.indices, id: \.self) { index in
+                            HStack {
+                                Text(topTracks[index].name)
+                                    .font(.body)
+                                    .padding(.bottom, 3)
+                                Spacer()
+                                
+                                VStack(alignment: .trailing) {
+                                    if let playcount = Int(topTracks[index].playcount) {
+                                        Text("Plays: \(playcount.formatted())")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    }
+                                    if let listeners = Int(topTracks[index].listeners) {
+                                        Text("Listeners: \(listeners.formatted())")
+                                            .font(.subheadline)
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, 30)
+                            .padding(.vertical, 5)
+                        }
+                        .listStyle(PlainListStyle())
+                        .padding(.bottom, 50)
+                    }
+                    
+                    // Similar artists
+                    Text("Similar Artists")
+                        .fontWeight(.bold)
+                        .padding(.bottom, 10)
+                        .font(.title2)
+                    
+                    ForEach(artistInfo.similar.artist, id: \.name) { similarArtist in
+                        Text(similarArtist.name)
+                            .padding(.bottom, 5)
+                }
                 }
             }
         }
