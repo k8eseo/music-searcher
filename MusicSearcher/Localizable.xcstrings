@@ -219,6 +219,9 @@
         }
       }
     },
+    "Refresh" : {
+
+    },
     "Search" : {
       "extractionState" : "manual",
       "localizations" : {

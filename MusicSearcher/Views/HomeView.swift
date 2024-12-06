@@ -55,7 +55,18 @@ struct HomeView: View {
                 .foregroundColor(.white)
                 .font(.system(size: largerFont ? 15 : 13))
                 .cornerRadius(5)
-                .padding(.bottom, 20)
+                .padding(.bottom, 10)
+                
+                // Refresh button
+                Button(action: { fetchTrendingTracks() }) {
+                    HStack {
+                        Image(systemName: "arrow.clockwise.circle.fill")
+                            .font(.system(size: 20))
+                    }
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .padding(.bottom, 20)
+                }
                 
                 List(trendingTracks, id: \.name) { track in
                     
@@ -94,14 +105,13 @@ struct HomeView: View {
                 }
                 .listStyle(PlainListStyle())
                 .onAppear {
-                    fetchTrendingTracks() // Initially fetch with default selection (10)
+                    fetchTrendingTracks()
                 }
             }
             .padding()
         }
     }
     
-    // Fetch trending tracks with the current selection
     private func fetchTrendingTracks() {
         Task {
             do {
@@ -116,6 +126,7 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
+
 
 
 
