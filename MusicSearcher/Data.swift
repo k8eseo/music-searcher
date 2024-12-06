@@ -17,7 +17,41 @@ struct TopTracksResponse: Codable {
     let toptracks: Tracks
 }
 
-// Track
+// Artist info
+struct ArtistResponse: Codable {
+    let artist: ArtistInfo
+}
+
+struct ArtistInfo: Codable {
+    let name: String
+    let stats: ArtistStats
+    let similar: SimilarArtists
+    let tags: ArtistTags
+    let bio: ArtistBio
+}
+
+struct ArtistStats: Codable {
+    let listeners: String
+    let playcount: String
+}
+
+struct SimilarArtists: Codable {
+    let artist: [TrackArtistInfo]
+}
+
+struct ArtistTags: Codable {
+    let tag: [Tag]
+}
+
+struct Tag: Codable {
+    let name: String
+}
+
+struct ArtistBio: Codable {
+    let summary: String
+}
+
+// Track info
 struct Tracks: Codable {
     let track: [TrackInfo]
 }

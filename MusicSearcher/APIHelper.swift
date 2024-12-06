@@ -43,7 +43,29 @@ class APIHelper: ObservableObject {
         return Array(decodedResponse.tracks.track.prefix(50))
     }
     
-    // Method for fetching artist's top tracks
+    // Fetch artist info
+    func fetchArtistInfo(artist: String) async throws -> ArtistInfo {
+        let params = ["method": "artist.getinfo", "artist": artist] // Fix method name
+        guard let url = buildUrl(endpoint: "", parameters: params) else {
+            throw URLError.BadURL
+        }
+        
+        let request = URLRequest(url: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        let decoder = JSONDecoder()
+        do {
+            let decodedResponse = try decoder.decode(ArtistResponse.self, from: data)
+            return decodedResponse.artist
+        } catch {
+            print("Decoding error: \(error)") // Debugging message
+            throw error
+        }
+    }
+
+    
+    
+    // Fetch artist's top tracks
     func fetchArtistTracks(artist: String) async throws -> [TrackInfo] {
         let params = ["method": "artist.gettoptracks", "artist": artist]
         guard let url = buildUrl(endpoint: "?method=artist.gettoptracks&artist=" + artist + "&api_key=" + Keys.apikey + "&format=json", parameters: params) else {
