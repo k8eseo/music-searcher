@@ -11,8 +11,25 @@
         }
       }
     },
+    "%lld" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
     "Appearance" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dış görünüş"
+          }
+        }
+      }
     },
     "Artist Biography" : {
       "localizations" : {
@@ -35,13 +52,34 @@
       }
     },
     "Color" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renk"
+          }
+        }
+      }
     },
     "Dark" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karanlık"
+          }
+        }
+      }
     },
     "Heading Color" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlık Rengi"
+          }
+        }
+      }
     },
     "Home" : {
       "extractionState" : "manual",
@@ -60,11 +98,36 @@
         }
       }
     },
+    "Information" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilgi"
+          }
+        }
+      }
+    },
     "Larger Font" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha Büyük Yazı Tipi"
+          }
+        }
+      }
     },
     "Light" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aydınlık"
+          }
+        }
+      }
     },
     "Listeners" : {
       "localizations" : {
@@ -97,10 +160,44 @@
       }
     },
     "No artist biography found." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarkıcı biyografisi bulunamadı."
+          }
+        }
+      }
     },
     "No similar artists found." : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benzer şarkıcı bulunamadı."
+          }
+        }
+      }
+    },
+    "Number of Results" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonuç Sayısı"
+          }
+        }
+      }
+    },
+    "Pick a number" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir sayı seçin"
+          }
+        }
+      }
     },
     "Plays" : {
       "localizations" : {
@@ -181,13 +278,34 @@
       }
     },
     "Simplify" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basitleştir"
+          }
+        }
+      }
     },
     "Simplify Details" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayrıntıları Basitleştirin"
+          }
+        }
+      }
     },
     "System" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem"
+          }
+        }
+      }
     },
     "Top Songs" : {
       "localizations" : {

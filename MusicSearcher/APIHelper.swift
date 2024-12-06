@@ -28,7 +28,7 @@ class APIHelper: ObservableObject {
     }
 
     // Fetch top songs on charts
-    func fetchTrendingTracks() async throws -> [TrackInfo] {
+    func fetchTrendingTracks(limit: Int) async throws -> [TrackInfo] {
         let params = ["method": "chart.gettoptracks"]
         guard let url = buildUrl(endpoint: "?method=chart.gettoptracks&api_key=" + Keys.apikey + "&format=json", parameters: params) else {
             throw URLError.BadURL
@@ -40,7 +40,7 @@ class APIHelper: ObservableObject {
         let decoder = JSONDecoder()
         let decodedResponse = try decoder.decode(ChartsTracksResponse.self, from: data)
         
-        return Array(decodedResponse.tracks.track.prefix(50))
+        return Array(decodedResponse.tracks.track.prefix(limit))
     }
     
     // Fetch artist info

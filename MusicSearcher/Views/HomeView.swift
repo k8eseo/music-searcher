@@ -14,6 +14,9 @@ struct HomeView: View {
     @AppStorage("headingColor") var headingColor: Color = Color.black
     @AppStorage("simplify") var simplify = false
     @AppStorage("largerFont") var largerFont = false
+    
+    @State private var showingOptions = false
+    @State private var selection = 10
 
     var body: some View {
         
@@ -37,6 +40,23 @@ struct HomeView: View {
                     .padding(.bottom, 10)
                     .foregroundColor(headingColor)
                 
+                Button("Number of Results") {
+                    showingOptions = true
+                }
+                .confirmationDialog("Pick a number", isPresented: $showingOptions, titleVisibility: .visible) {
+                    ForEach([10, 25, 50, 100], id: \.self) { num in
+                        Button("\(num)") {
+                            selection = num
+                            fetchTrendingTracks()
+                        }
+                    }
+                }
+                .background(headingColor)
+                .foregroundColor(.white)
+                .font(.system(size: largerFont ? 15 : 13))
+                .cornerRadius(5)
+                .padding(.bottom, 20)
+                
                 List(trendingTracks, id: \.name) { track in
                     
                     NavigationLink(destination: ArtistView(artistName: track.artist.name)) {
@@ -48,9 +68,9 @@ struct HomeView: View {
                                     .font(largerFont ? .system(size: 20) : .body)
                                     .padding(.bottom, 3)
                                 
-                                    Text(track.artist.name)
-                                        .font(.system(size: largerFont ? 15 : 12))
-                                        .foregroundColor(Color("AccentColor"))
+                                Text(track.artist.name)
+                                    .font(.system(size: largerFont ? 15 : 12))
+                                    .foregroundColor(Color("AccentColor"))
                             }
                             
                             Spacer()
@@ -74,16 +94,21 @@ struct HomeView: View {
                 }
                 .listStyle(PlainListStyle())
                 .onAppear {
-                    Task {
-                        do {
-                            trendingTracks = try await homeHelper.fetchTrendingTracks()
-                        } catch {
-                            print("Error fetching trending tracks: \(error)")
-                        }
-                    }
+                    fetchTrendingTracks() // Initially fetch with default selection (10)
                 }
             }
             .padding()
+        }
+    }
+    
+    // Fetch trending tracks with the current selection
+    private func fetchTrendingTracks() {
+        Task {
+            do {
+                trendingTracks = try await homeHelper.fetchTrendingTracks(limit: selection)
+            } catch {
+                print("Error fetching trending tracks: \(error)")
+            }
         }
     }
 }
@@ -91,5 +116,6 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
+
 
 
