@@ -8,16 +8,22 @@
 import SwiftUI
 
 struct SearchArtistView: View {
+    
     @State var artistName: String
     @State private var navigateToNextView = false
     
+    @AppStorage("headingColor") var headingColor: Color = Color.black
+    @AppStorage("largerFont") var largerFont = false
+    
     var body: some View {
+        
         NavigationView {
             VStack {
                 Text("Search by Artist Name")
-                    .font(.title)
+                    .font(largerFont ? .system(size: 30): .title)
                     .fontWeight(.bold)
                     .padding(.bottom)
+                    .foregroundColor(headingColor)
                 
                 HStack {
                     TextField("Artist Name", text: $artistName)

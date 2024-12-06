@@ -1,0 +1,214 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        }
+      }
+    },
+    "Appearance" : {
+
+    },
+    "Artist Biography" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarkıcı Biyografisi"
+          }
+        }
+      }
+    },
+    "Artist Name" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarkıcı Adı"
+          }
+        }
+      }
+    },
+    "Color" : {
+
+    },
+    "Dark" : {
+
+    },
+    "Heading Color" : {
+
+    },
+    "Home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ev"
+          }
+        }
+      }
+    },
+    "Larger Font" : {
+
+    },
+    "Light" : {
+
+    },
+    "Listeners" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinleyiciler"
+          }
+        }
+      }
+    },
+    "Listeners: %@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dinleyiciler: %@"
+          }
+        }
+      }
+    },
+    "Music Searcher" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Müzik Arayıcısı"
+          }
+        }
+      }
+    },
+    "No artist biography found." : {
+
+    },
+    "No similar artists found." : {
+
+    },
+    "Plays" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oynatma sayısı"
+          }
+        }
+      }
+    },
+    "Plays: %@" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oynatma sayısı: %@"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arama"
+          }
+        }
+      }
+    },
+    "Search artists and songs" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarkıcıları ve şarkıları arayın"
+          }
+        }
+      }
+    },
+    "Search by Artist Name" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şarkıcı Adına Göre Arayın"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
+          }
+        }
+      }
+    },
+    "Similar Artists" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benzer Şarkıcılar"
+          }
+        }
+      }
+    },
+    "Simplify" : {
+
+    },
+    "Simplify Details" : {
+
+    },
+    "System" : {
+
+    },
+    "Top Songs" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En İyi Şarkılar"
+          }
+        }
+      }
+    },
+    "Trending Tracks Today" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünün Trend Şarkıları"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

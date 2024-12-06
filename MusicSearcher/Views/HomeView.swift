@@ -10,25 +10,32 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var homeHelper = APIHelper()
     @State private var trendingTracks: [TrackInfo] = []
+    
+    @AppStorage("headingColor") var headingColor: Color = Color.black
+    @AppStorage("simplify") var simplify = false
+    @AppStorage("largerFont") var largerFont = false
 
     var body: some View {
+        
         NavigationView {
             
             VStack {
                 
                 Text("Music Searcher")
-                    .font(.system(size: 40))
+                    .font(.system(size: (largerFont ? 45 : 40)))
                     .fontWeight(.bold)
                     .padding(.top, 30)
+                    .foregroundColor(headingColor)
                 
                 Text("Search artists and songs")
-                    .font(.system(size: 15))
+                    .font(.system(size: (largerFont ? 25 : 15)))
                     .padding(.bottom, 50)
                 
                 Text("Trending Tracks Today")
-                    .font(.title2)
+                    .font(largerFont ? .system(size: 30) : .title2)
                     .fontWeight(.bold)
                     .padding(.bottom, 10)
+                    .foregroundColor(headingColor)
                 
                 List(trendingTracks, id: \.name) { track in
                     
@@ -38,11 +45,11 @@ struct HomeView: View {
                             
                             VStack(alignment: .leading) {
                                 Text(track.name)
-                                    .font(.body)
+                                    .font(largerFont ? .system(size: 20) : .body)
                                     .padding(.bottom, 3)
                                 
                                     Text(track.artist.name)
-                                        .font(.system(size: 12))
+                                        .font(.system(size: largerFont ? 15 : 12))
                                         .foregroundColor(Color("AccentColor"))
                             }
                             
@@ -53,11 +60,13 @@ struct HomeView: View {
                                     Text("Plays: \(playcount.formatted())")
                                         .font(.subheadline)
                                         .foregroundColor(.gray)
+                                        .opacity(simplify ? 0 : 1)
                                 }
                                 if let listeners = Int(track.listeners) {
                                     Text("Listeners: \(listeners.formatted())")
                                         .font(.subheadline)
                                         .foregroundColor(.gray)
+                                        .opacity(simplify ? 0 : 1)
                                 }
                             }
                         }

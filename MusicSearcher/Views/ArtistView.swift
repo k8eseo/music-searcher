@@ -19,6 +19,10 @@ struct ArtistView: View {
     @State private var offset: CGFloat = -1000
     @State private var statsVisible = false
     
+    @AppStorage("headingColor") var headingColor: Color = Color.black
+    @AppStorage("simplify") var simplify = false
+    @AppStorage("largerFont") var largerFont = false
+    
     var body: some View {
         
         ScrollView {
@@ -29,9 +33,10 @@ struct ArtistView: View {
                     
                     // Artist name
                     Text(artistInfo.name)
-                        .font(.system(size: 40))
+                        .font(.system(size: largerFont ? 45 : 40))
                         .fontWeight(.bold)
                         .padding(.bottom, 30)
+                        .foregroundColor(headingColor)
                         .padding(.top, 40)
                         .offset(y: offset)
                         .onAppear {
@@ -45,11 +50,11 @@ struct ArtistView: View {
                         VStack {
                             if let playcount = Int(artistInfo.stats.playcount) {
                                 Text(playcount.formatted(.number))
-                                    .font(.system(size: 20))
+                                    .font(.system(size: largerFont ? 25 : 20))
                             }
                             
                             Text("Plays")
-                                .font(.system(size: 12))
+                                .font(.system(size: largerFont ? 15 : 12))
                         }
                         
                         Spacer()
@@ -57,14 +62,14 @@ struct ArtistView: View {
                         VStack {
                             if let listeners = Int(artistInfo.stats.listeners) {
                                 Text(listeners.formatted(.number))
-                                    .font(.system(size: 20))
+                                    .font(.system(size: largerFont ? 25 : 20))
                             }
                             
                             Text("Listeners")
-                                .font(.system(size: 12))
+                                .font(.system(size: largerFont ? 15 : 12))
                         }
                     }
-                    .padding(.horizontal, 75)
+                    .padding(.horizontal, largerFont ? 40 : 75)
                     .padding(.bottom, 30)
                     .opacity(statsVisible ? 1 : 0)
                     .onAppear {
@@ -78,7 +83,7 @@ struct ArtistView: View {
                         HStack {
                             ForEach(artistInfo.tags.tag, id: \.name) { tag in
                                 Text(tag.name)
-                                    .font(.system(size: 10))
+                                    .font(.system(size: largerFont ? 12 : 10))
                                     .padding(6)
                                     .background(Color.secondary.opacity(0.2))
                                     .cornerRadius(5)
@@ -90,29 +95,37 @@ struct ArtistView: View {
                     // Biography
                     Text("Artist Biography")
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .font(.title2)
+                        .font(largerFont ? .title : .title2)
+                        .foregroundColor(headingColor)
                     
-                    ScrollView {
-                        Text(artistInfo.bio.summary)
-                            .padding(.horizontal, 40)
+                    if !artistInfo.bio.summary.isEmpty {
+                        ScrollView {
+                            Text(artistInfo.bio.summary)
+                                .padding(.horizontal, 40)
+                                .padding(.top, 10)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.system(size: largerFont ? 20 : 15))
+                        }
+                        .frame(width: 400, height: 300)
+                        .padding(.bottom, 40)
+                    } else {
+                        Text("No artist biography found.")
                             .padding(.top, 10)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .font(.system(size: 15))
+                            .font(.system(size: largerFont ? 20 : 15))
                     }
-                    .frame(width: 400, height: 300)
-                    .padding(.bottom, 40)
                     
                     // Top songs
                     Text("Top Songs")
                         .fontWeight(.bold)
                         .padding(.bottom, 5)
-                        .font(.title2)
+                        .font(largerFont ? .title : .title2)
+                        .foregroundColor(headingColor)
                     
                     ScrollView {
                         ForEach(topTracks.indices, id: \.self) { index in
                             HStack {
                                 Text(topTracks[index].name)
-                                    .font(.body)
+                                    .font(largerFont ? .system(size: 20) : .body)
                                     .padding(.bottom, 3)
                                 Spacer()
                                 
@@ -121,11 +134,13 @@ struct ArtistView: View {
                                         Text("Plays: \(playcount.formatted())")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)
+                                            .opacity(simplify ? 0 : 1)
                                     }
                                     if let listeners = Int(topTracks[index].listeners) {
                                         Text("Listeners: \(listeners.formatted())")
                                             .font(.subheadline)
                                             .foregroundColor(.gray)
+                                            .opacity(simplify ? 0 : 1)
                                     }
                                 }
                             }
@@ -140,11 +155,18 @@ struct ArtistView: View {
                     Text("Similar Artists")
                         .fontWeight(.bold)
                         .padding(.bottom, 10)
-                        .font(.title2)
+                        .font(largerFont ? .title : .title2)
+                        .foregroundColor(headingColor)
                     
-                    ForEach(artistInfo.similar.artist, id: \.name) { similarArtist in
-                        Text(similarArtist.name)
-                            .padding(.bottom, 5)
+                    if !artistInfo.similar.artist.isEmpty {
+                        ForEach(artistInfo.similar.artist, id: \.name) { similarArtist in
+                            Text(similarArtist.name)
+                                .padding(.bottom, 5)
+                                .font(.system(size: largerFont ? 20 : 15))
+                        }
+                    } else {
+                        Text("No similar artists found.")
+                            .font(.system(size: largerFont ? 20 : 15))
                     }
                 }
             }
