@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum TabType: Int, CaseIterable {
-    case home, artist, album
+    case home, search
     
     var title: String {
         String(describing: self).capitalized
@@ -18,8 +18,7 @@ enum TabType: Int, CaseIterable {
     var image: String {
         switch self {
         case .home: "home"
-        case .artist: "artist"
-        case .album: "album"
+        case .search: "search"
         }
     }
 }

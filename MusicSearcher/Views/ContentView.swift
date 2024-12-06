@@ -12,21 +12,15 @@ struct ContentView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Label(TabType.home.title, image: TabType.home.image)
+                    Label(TabType.home.title, systemImage: "house.fill")
                 }
                 .tag(0)
             
             SearchArtistView(artistName: "")
                 .tabItem {
-                    Label(TabType.artist.title, image: TabType.artist.image)
+                    Label(TabType.search.title, systemImage: "magnifyingglass")
                 }
                 .tag(1)
-            
-            SearchAlbumView()
-                .tabItem {
-                    Label(TabType.album.title, image: TabType.album.image)
-                }
-                .tag(2)
         }
     }
 }

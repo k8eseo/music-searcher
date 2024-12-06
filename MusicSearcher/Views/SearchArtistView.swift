@@ -14,7 +14,7 @@ struct SearchArtistView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Search by Artist")
+                Text("Search by Artist Name")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.bottom)

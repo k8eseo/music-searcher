@@ -21,7 +21,7 @@ struct HomeView: View {
                     .fontWeight(.bold)
                     .padding(.top, 30)
                 
-                Text("Search by artist or album name")
+                Text("Search artists and songs")
                     .font(.system(size: 15))
                     .padding(.bottom, 50)
                 

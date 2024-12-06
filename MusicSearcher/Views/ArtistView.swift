@@ -16,6 +16,9 @@ struct ArtistView: View {
     @State private var isLoading = true
     @State private var errorMessage: String?
     
+    @State private var offset: CGFloat = -1000
+    @State private var statsVisible = false
+    
     var body: some View {
         
         ScrollView {
@@ -29,6 +32,13 @@ struct ArtistView: View {
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                         .padding(.bottom, 30)
+                        .padding(.top, 40)
+                        .offset(y: offset)
+                        .onAppear {
+                            withAnimation(.easeOut(duration: 1)) {
+                                offset = 0
+                            }
+                        }
                     
                     // Listeners/playcount
                     HStack {
@@ -55,7 +65,13 @@ struct ArtistView: View {
                         }
                     }
                     .padding(.horizontal, 75)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 30)
+                    .opacity(statsVisible ? 1 : 0)
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 2)) {
+                            statsVisible = true
+                        }
+                    }
                     
                     // Tags
                     if !artistInfo.tags.tag.isEmpty {
@@ -68,7 +84,7 @@ struct ArtistView: View {
                                     .cornerRadius(5)
                             }
                         }
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 40)
                     }
                     
                     // Biography
@@ -79,7 +95,7 @@ struct ArtistView: View {
                     ScrollView {
                         Text(artistInfo.bio.summary)
                             .padding(.horizontal, 40)
-                            .padding(.top, 25)
+                            .padding(.top, 10)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .font(.system(size: 15))
                     }
@@ -129,9 +145,10 @@ struct ArtistView: View {
                     ForEach(artistInfo.similar.artist, id: \.name) { similarArtist in
                         Text(similarArtist.name)
                             .padding(.bottom, 5)
-                }
+                    }
                 }
             }
+            .padding(.bottom, 50)
         }
         
         .task {
